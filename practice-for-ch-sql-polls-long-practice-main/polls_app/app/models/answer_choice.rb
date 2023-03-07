@@ -9,7 +9,12 @@
 #  updated_at  :datetime         not null
 #
 class AnswerChoice < ApplicationRecord
-    belongs_to :question
+    validates :text, presence:true
+    
+    belongs_to :question,
+    foreign_key: :question_id,
+    class_name: :Question
+    
 
     has_many :responses,
     dependent: :destroy
